@@ -16,8 +16,7 @@
             border-collapse: collapse;
         }
 
-        th,
-        td {
+        th, td {
             border: 1px solid black;
             text-align: center;
             height: 35px;
@@ -28,11 +27,9 @@
             border: none;
             padding: 20px;
         }
-
         tr:first-child th:first-child {
             border-top-left-radius: 10px;
         }
-
         tfoot {
             font-weight: bold;
         }
@@ -88,101 +85,128 @@
 </head>
 
 <body>
-    <div class="main-container">
-        <table id="semester-table">
-            <caption>Enter your best and least expected credit for each subject in between 0-10, then hit the calculate
-                SPI button.</caption>
-            <thead>
-                <tr>
-                    <th class="no-border" colspan="5">SEMESTER-4 (ECE)</th>
-                </tr>
-                <tr>
-                    <th>S.No.</th>
-                    <th>Subject</th>
-                    <th>Credit</th>
-                    <th>Best case</th>
-                    <th>Least case</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>EC-243 (T)</td>
-                    <td>6</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>EC-251 (T)</td>
-                    <td>8</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>MA-204 (T)</td>
-                    <td>6</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>SC-202 (T)</td>
-                    <td>6</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>HS-XX (T)</td>
-                    <td>6</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>CS-204 (T)</td>
-                    <td>6</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>EC-252 (P)</td>
-                    <td>3</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>EC-244 (P)</td>
-                    <td>3</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th colspan="2">Total calculation</th>
-                    <td id="credit-total"></td>
-                    <td id="best-case-total"></td>
-                    <td id="least-case-total"></td>
-                </tr>
-                <tr>
-                    <th colspan="3">SPI</th>
-                    <td id="best-spi"></td>
-                    <td id="least-spi"></td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-    <div class="calculateButton">
-        <button onclick="calculateSPI()">Calculate SPI</button>
-    </div>
-    <div class="footerBottom">
-        <p>Copyright &copy; 2024 | Designed by Ayush</p>
-    </div>
+        <div class="main-container">
+            <table id="semester-table">
+                <caption>Enter your best and least expected credit for each subject in between 0-10, then hit the calculate SPI button.</caption>
+                <thead>
+                    <tr>
+                        <th class="no-border" colspan="5">SEMESTER-4 (ECE)</th>
+                    </tr>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Subject</th>
+                        <th>Credit</th>
+                        <th>Best case</th>
+                        <th>Least case</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>EC-243 (T)</td>
+                        <td>6</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>EC-251 (T)</td>
+                        <td>8</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>MA-204 (T)</td>
+                        <td>6</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>SC-202 (T)</td>
+                        <td>6</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>HS-XX (T)</td>
+                        <td>6</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>CS-204 (T)</td>
+                        <td>6</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>EC-252 (P)</td>
+                        <td>3</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>EC-244 (P)</td>
+                        <td>3</td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="2">Total calculation</th>
+                        <td id="credit-total"></td>
+                        <td id="best-case-total"></td>
+                        <td id="least-case-total"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="3">SPI</th>
+                        <td id="best-spi"></td>
+                        <td id="least-spi"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="calculateButton">
+            <button onclick="calculateSPI()">Calculate SPI</button>
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy; 2024 | Designed by Ayush</p>
+        </div>
 </body>
+<script>
+        function calculateSPI() {
+            let bestCaseTotal = 0;
+            let leastCaseTotal = 0;
+            let totalCredit = 0;
 
+            const rows = document.querySelectorAll('#semester-table tbody tr');
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const credits = parseFloat(cells[2].textContent);
+                const bestGrade = parseFloat(cells[3].textContent);
+                const leastGrade = parseFloat(cells[4].textContent);
+
+                totalCredit += credits;
+                bestCaseTotal += bestGrade * credits;
+                leastCaseTotal += leastGrade * credits;
+            });
+
+            const bestSPI = bestCaseTotal / totalCredit;
+            const leastSPI = leastCaseTotal / totalCredit;
+
+            document.getElementById('credit-total').textContent = totalCredit.toFixed(1);
+            document.getElementById('best-case-total').textContent = bestCaseTotal.toFixed(1);
+            document.getElementById('least-case-total').textContent = leastCaseTotal.toFixed(1);
+            document.getElementById('best-spi').textContent = bestSPI.toFixed(2);
+            document.getElementById('least-spi').textContent = leastSPI.toFixed(2);
+        }
+    </script>
 </html>
