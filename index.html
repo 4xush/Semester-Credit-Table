@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semester Result Predictor - Table</title>
-    <link rel="icon" type="image/png" href="./fevicon.png">
+    <link rel="icon" type="image/png" href="./icon.png">
     <style>
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -39,7 +39,7 @@
         .main-container {
             box-shadow: 5px 5px 0px 0px rgb(0, 0, 0);
             border-radius: 20px;
-            padding:0 30px 5px 30px;
+            padding: 0 30px 5px 30px;
             border: 1px solid black;
         }
 
@@ -71,6 +71,7 @@
             font-size: 0.8rem;
             color: #e4380e;
         }
+
         #semester-table tbody td[contenteditable="true"]:hover {
             cursor: pointer;
         }
@@ -81,9 +82,17 @@
         }
     </style>
 </head>
+
 <body>
     <div class="header">
-        <h1>SEMESTER 4 (ECE)</h1>
+        <h1 id="semester-title">SEMESTER 4 (ECE)</h1>
+    </div>
+    <div>
+        <label for="branch-selector">Select Branch:</label>
+        <select id="branch-selector" onchange="updateTable()">
+            <option value="ECE">ECE</option>
+            <option value="CSE">CSE</option>
+        </select>
     </div>
     <div class="main-container">
         <table id="semester-table">
@@ -99,63 +108,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>EC-243 (T)</td>
-                    <td>6</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-
-                    <td>2</td>
-                    <td>EC-251 (T)</td>
-                    <td>8</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>MA-204 (T)</td>
-                    <td>6</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>SC-202 (T)</td>
-                    <td>6</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>HS-XX (T)</td>
-                    <td>6</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>CS-204 (T)</td>
-                    <td>6</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>EC-252 (P)</td>
-                    <td>3</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>EC-244 (P)</td>
-                    <td>3</td>
-                    <td contenteditable="true"></td>
-                    <td contenteditable="true"></td>
-                </tr>
+                <!-- Content will be updated dynamically -->
             </tbody>
             <tfoot>
                 <tr>
@@ -177,38 +130,94 @@
     </div>
     <hr />
     <div class="footerBottom">
-    <hr/>
+        <hr />
         <p>Copyright &copy; 2024 | Designed by Ayush</p>
     </div>
+
+    <script>
+        const data = {
+            ECE: [
+                { id: 1, subject: 'EC-243 (T)', credit: 6 },
+                { id: 2, subject: 'EC-251 (T)', credit: 8 },
+                { id: 3, subject: 'MA-204 (T)', credit: 6 },
+                { id: 4, subject: 'SC-202 (T)', credit: 6 },
+                { id: 5, subject: 'HS-XX (T)', credit: 6 },
+                { id: 6, subject: 'CS-204 (T)', credit: 6 },
+                { id: 7, subject: 'EC-252 (P)', credit: 3 },
+                { id: 8, subject: 'EC-244 (P)', credit: 3 }
+            ],
+            CSE: [
+                { id: 1, subject: 'CS-101', credit: 4 },
+                { id: 2, subject: 'CS-102', credit: 4 },
+                { id: 3, subject: 'CS-103', credit: 4 },
+                { id: 4, subject: 'CS-104', credit: 4 },
+                { id: 5, subject: 'CS-105', credit: 4 },
+                { id: 6, subject: 'CS-106', credit: 4 },
+                { id: 7, subject: 'CS-107', credit: 2 },
+                { id: 8, subject: 'CS-108', credit: 2 }
+            ]
+        };
+
+        function updateTable() {
+            const branch = document.getElementById('branch-selector').value;
+            const tableBody = document.getElementById('semester-table').querySelector('tbody');
+            const title = document.getElementById('semester-title');
+            title.textContent = `SEMESTER 4 (${branch})`;
+
+            tableBody.innerHTML = '';
+
+            data[branch].forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.id}</td>
+                    <td>${item.subject}</td>
+                    <td>${item.credit}</td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function calculateSPI() {
+            let bestcreditTotal = 0;
+            let leastcreditTotal = 0;
+            let totalCredit = 0;
+
+            const rows = document.querySelectorAll('#semester-table tbody tr');
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const credits = parseFloat(cells[2].textContent);
+                const bestGrade = parseFloat(cells[3].textContent);
+                const leastGrade = parseFloat(cells[4].textContent);
+
+                if (!isNaN(credits)) {
+                    totalCredit += credits;
+                }
+
+                if (!isNaN(bestGrade)) {
+                    bestcreditTotal += bestGrade * credits;
+                }
+
+                if (!isNaN(leastGrade)) {
+                    leastcreditTotal += leastGrade * credits;
+                }
+            });
+
+            const bestSPI = bestcreditTotal / totalCredit;
+            const leastSPI = leastcreditTotal / totalCredit;
+
+            document.getElementById('credit-total').textContent = totalCredit.toFixed(1);
+            document.getElementById('best-credit-total').textContent = bestcreditTotal.toFixed(1);
+            document.getElementById('least-credit-total').textContent = leastcreditTotal.toFixed(1);
+            document.getElementById('best-spi').textContent = bestSPI.toFixed(2);
+            document.getElementById('least-spi').textContent = leastSPI.toFixed(2);
+        }
+
+        // Initialize the table with default branch (ECE)
+        updateTable();
+    </script>
 </body>
-<script>
-    function calculateSPI() {
-        let bestcreditTotal = 0;
-        let leastcreditTotal = 0;
-        let totalCredit = 0;
-
-        const rows = document.querySelectorAll('#semester-table tbody tr');
-
-        rows.forEach(row => {
-            const cells = row.querySelectorAll('td');
-            const credits = parseFloat(cells[2].textContent);
-            const bestGrade = parseFloat(cells[3].textContent);
-            const leastGrade = parseFloat(cells[4].textContent);
-
-            totalCredit += credits;
-            bestcreditTotal += bestGrade * credits;
-            leastcreditTotal += leastGrade * credits;
-        });
-
-        const bestSPI = bestcreditTotal / totalCredit;
-        const leastSPI = leastcreditTotal / totalCredit;
-
-        document.getElementById('credit-total').textContent = totalCredit.toFixed(1);
-        document.getElementById('best-credit-total').textContent = bestcreditTotal.toFixed(1);
-        document.getElementById('least-credit-total').textContent = leastcreditTotal.toFixed(1);
-        document.getElementById('best-spi').textContent = bestSPI.toFixed(2);
-        document.getElementById('least-spi').textContent = leastSPI.toFixed(2);
-    }
-</script>
 
 </html>
