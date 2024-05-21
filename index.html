@@ -80,18 +80,37 @@
             font-size: 0.7rem;
             text-align: center;
         }
+        .branch-selector-div {  
+            border-radius: 10px;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+        #branch-selector{
+            padding: 0.2rem;
+            border-radius: 10px;
+            background-color: whitesmoke;
+            /* border-bottom-left-radius: 0.2rem;
+            border-top-right-radius: 0.2rem; */
+            box-shadow: 2px 2px 0px 0px rgb(0, 0, 0);
+        }
+        #branch-selector:hover{
+            cursor: pointer;
+        }
+        .select-branch{
+        background-color: white;
+        }
     </style>
 </head>
 
 <body>
     <div class="header">
-        <h1 id="semester-title">SEMESTER 4 (ECE)</h1>
+        <h1 id="semester-title">SEMESTER z (ECE)</h1>
     </div>
-    <div>
+    <div class="branch-selector-div">
         <label for="branch-selector">Select Branch:</label>
         <select id="branch-selector" onchange="updateTable()">
-            <option value="ECE">ECE</option>
-            <option value="CSE">CSE</option>
+            <option value="ECE" class="select-branch">ECE</option>
+            <option value="CSE" class="select-branch">CSE</option>
         </select>
     </div>
     <div class="main-container">
@@ -103,8 +122,8 @@
                     <th>S.No.</th>
                     <th>Subject</th>
                     <th>Credit</th>
-                    <th>Best credit</th>
-                    <th>Least credit</th>
+                    <th>Best Grade</th>
+                    <th>Least Grade</th>
                 </tr>
             </thead>
             <tbody>
@@ -147,14 +166,15 @@
                 { id: 8, subject: 'EC-244 (P)', credit: 3 }
             ],
             CSE: [
-                { id: 1, subject: 'CS-101', credit: 4 },
-                { id: 2, subject: 'CS-102', credit: 4 },
-                { id: 3, subject: 'CS-103', credit: 4 },
-                { id: 4, subject: 'CS-104', credit: 4 },
-                { id: 5, subject: 'CS-105', credit: 4 },
-                { id: 6, subject: 'CS-106', credit: 4 },
-                { id: 7, subject: 'CS-107', credit: 2 },
-                { id: 8, subject: 'CS-108', credit: 2 }
+                { id: 1, subject: 'CS-205', credit: 6 },
+                { id: 2, subject: 'CS-231', credit: 6 },
+                { id: 3, subject: 'CS-232', credit: 3 },
+                { id: 4, subject: 'CS-235', credit: 6 },
+                { id: 5, subject: 'CS-236', credit: 3 },
+                { id: 6, subject: 'CS-240', credit: 6 },
+                { id: 7, subject: 'CS-241', credit: 4 },
+                { id: 8, subject: 'SC-202', credit: 6 },
+                { id :9, subject: 'HSS-XX', credit: 6 }
             ]
         };
 
