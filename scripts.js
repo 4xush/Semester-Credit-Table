@@ -103,3 +103,21 @@ function calculateSPI() {
 
 // Initialize the table with default branch (ECE)
 updateTable();
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const toggleBtn = document.querySelector('.toggle-btn');
+    const sidebar = document.getElementById('sidebar');
+
+    toggleBtn.addEventListener('click', function() {
+        sidebar.classList.toggle('active');
+        toggleBtn.style.display = sidebar.classList.contains('active') ? 'none' : 'block';
+    });
+
+    document.addEventListener('click', function(event) {
+        if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+            sidebar.classList.remove('active');
+            toggleBtn.style.display = 'block';
+        }
+    });
+});
