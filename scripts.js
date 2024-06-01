@@ -1,3 +1,4 @@
+
 const data = {
     ECE: {
         1: [
@@ -232,24 +233,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const toggleBtn = document.querySelector('.toggle-btn');
     const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
+    const dark_overlay = document.getElementById('dark_overlay');
 
     toggleBtn.addEventListener('click', function() {
         sidebar.classList.toggle('active');
-        overlay.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
+        dark_overlay.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
         toggleBtn.style.display = sidebar.classList.contains('active') ? 'none' : 'block';
     });
 
     document.addEventListener('click', function(event) {
-        if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target) && !overlay.contains(event.target)) {
+        if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target) && !dark_overlay.contains(event.target)) {
             sidebar.classList.remove('active');
-            overlay.style.display = 'none';
+            dark_overlay.style.display = 'none';
             toggleBtn.style.display = 'block';
         }
     });
-    overlay.addEventListener('click', function() {
+    dark_overlay.addEventListener('click', function() {
         sidebar.classList.remove('active');
-        overlay.style.display = 'none';
+        dark_overlay.style.display = 'none';
         toggleBtn.style.display = 'block';
     });
 
@@ -266,4 +267,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
- 

@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPI Calculator - Table</title>
+    <title>SPI Calculator - Table (B. Tech)</title>
     <link rel="icon" type="image/png" href="transparent_icon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div class="sem-header">
+        <a href="https://www.iiitg.ac.in/btech-curriculum" target="_blank"><img src="iiitg_logo.png" alt="IIIT Guwahati log" class="logo"></a>
         <h1 id="semester-title"></h1>
     </div>
     <div class="branch-selector-div">
@@ -22,7 +23,8 @@
     </div>
     <div class="main-container">
         <table id="semester-table">
-            <caption>Enter your best and least expected grade for each subject (between AA and DD), and hit the 'Calculate SPI' button.</caption>
+            <caption>Enter your best and least expected grade for each subject (between AA and DD), and hit the
+                'Calculate SPI' button.</caption>
             <thead>
                 <tr>
                     <th>S.No.</th>
@@ -37,13 +39,13 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th colspan="2" style="padding-left: 100px; padding-top : 10px;">Total</th>
+                    <th colspan="2" >Total</th>
                     <td id="credit-total"></td>
                     <td id="best-credit-total"></td>
                     <td id="least-credit-total"></td>
                 </tr>
                 <tr>
-                    <th colspan="3" style="padding-right: 50px;">SPI</th>
+                    <th colspan="3" style="padding-right: 50px;">Expected SPI</th>
                     <td id="best-spi"></td>
                     <td id="least-spi"></td>
                 </tr>
@@ -55,6 +57,7 @@
     </div>
 
     <div id="sidebar">
+        <a href="https://www.iiitg.ac.in/" target="_blank"><img src="iiitg_logo.png" alt="IIIT Guwahati log" class="slidebar-logo">
         <ul>
             <li><a href="#" onclick="selectSemester(1)">Semester 1</a></li>
             <li><a href="#" onclick="selectSemester(2)">Semester 2</a></li>
@@ -65,17 +68,19 @@
             <li><a href="#" onclick="selectSemester(7)">Semester 7</a></li>
             <!-- <li><a href="#" onclick="selectSemester(8)">Semester 8</a></li> -->
         </ul>
-    </div>    
+    </div>
     <div class="toggle-btn">
         <span></span>
         <span></span>
         <span></span>
     </div>
-    <div id="overlay"></div>
-    <footer class="footerBottom">
-        <hr />
-        <p>Copyright &copy; 2024 | Designed by <a href="https://www.linkedin.com/in/ayushkv/" target="_blank">Ayush</a></p>
-    </footer>
+    <div id="dark_overlay"></div>
+    <div class="credentials">
+    <hr/>
+        <p>Copyright &copy; 2024 | Designed by Ayush <a href="https://github.com/4xush" target="_blank">(Github)</a>
+            <a href="https://www.linkedin.com/in/ayushkv/" target="_blank">(LinkedIn)</a>
+        </p>
+    </div>
 
     <script src="scripts.js"></script>
 </body>
