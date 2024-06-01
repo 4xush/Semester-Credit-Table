@@ -28,7 +28,7 @@ body {
 
 #sidebar ul {
     list-style: none;
-    padding: 100px 50px 
+    padding: 100px 50px
 }
 
 #sidebar ul li {
@@ -36,6 +36,25 @@ body {
     font-size: 20px;
     padding: 10px 20px;
 }
+
+#sidebar ul li a {
+    color: aliceblue;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+
+#sidebar ul li a:active {
+    color: rgb(215, 34, 255);
+    /* color when the link is clicked */
+}
+
+#sidebar ul li a:hover {
+    /*#sidebar ul li a:hover */
+    box-shadow: 8px 7px 0px 0px rgba(0, 0, 0, 1);
+    border-radius: 15px;
+}
+
 
 .toggle-btn {
     position: fixed;
@@ -57,7 +76,7 @@ body {
     left: 0;
 }
 
-#sidebar.active + .toggle-btn {
+#sidebar.active+.toggle-btn {
     display: none;
 }
 
@@ -70,7 +89,8 @@ table {
     overflow: hidden;
 }
 
-th, td {
+th,
+td {
     border: solid rgba(239, 239, 239, 0.7) 1px;
     text-align: center;
     height: 30px;
@@ -97,12 +117,14 @@ tfoot {
     transition: all 0.3s ease;
 }
 
-.calculateButton{
-margin-bottom: 20px;
+.calculateButton {
+    margin-bottom: 20px;
 }
+
 .calculateButton button:hover {
     background-color: #45a049;
 }
+
 .main-container caption {
     caption-side: bottom;
     padding: 10px;
@@ -162,6 +184,8 @@ margin-bottom: 20px;
     border-bottom-right-radius: 15px;
 }
 
-tbody tr:nth-child(even), thead, tfoot tr:nth-child(2) {
+tbody tr:nth-child(even),
+thead,
+tfoot tr:nth-child(2) {
     background-color: rgba(239, 239, 239, 0.22);
 }
