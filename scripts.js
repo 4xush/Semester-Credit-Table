@@ -61,7 +61,15 @@ const data = {
             { id: 10, subject: 'EC300', credit: 6 }, // Project (optional)
           ],
           
-        7: [ /* Subjects and credits for ECE Semester 7 */ ],
+          7: [
+            { id: 1, subject: 'EC456', credit: 6 },  // Communication Network
+            { id: 2, subject: 'ECXXX', credit: 6 },  // Elective I
+            { id: 3, subject: 'ECXXX', credit: 6 },  // Elective II (assuming another ECE Elective)
+            { id: 4, subject: 'EC400', credit: 12 }, // Project I
+            { id: 5, subject: 'OPXXX', credit: 6 }, // Open Elective
+            { id: 6, subject: 'HSXXX', credit: 6 },  // HSS Elective
+          ],
+          
         8: [ /* Subjects and credits for ECE Semester 8 */ ]
     },
     CSE: {
@@ -124,8 +132,15 @@ const data = {
             { id: 7, subject: 'CS300', credit: 6 },  
             { id: 8, subject: 'HSXXX', credit: 6 }
           ],          
-        7: [ /* Subjects and credits for CSE Semester 7 */ ],
-        8: [ /* Subjects and credits for CSE Semester 8 */ ]
+          7: [
+            { id: 1, subject: 'CS401', credit: 6 },  // Data Analytics
+            { id: 2, subject: 'CS4XX', credit: 6 },  // Elective I
+            { id: 3, subject: 'CS4XX', credit: 6 },  // Elective II
+            { id: 4, subject: 'CS4XX', credit: 6 },  // Elective III
+            { id: 5, subject: 'HSXXX', credit: 6 },  // HSS Elective
+          ],
+          
+        // 8: [ /* Subjects and credits for CSE Semester 8 */ ] no 8 sem
     }
 };
 
@@ -212,23 +227,30 @@ function calculateSPI() {
     document.getElementById('least-spi').textContent = leastSPI.toFixed(2);
 }
 
-// Initialize the table with default branch (ECE) and semester 4
 document.addEventListener('DOMContentLoaded', function() {
     updateTable();
 
     const toggleBtn = document.querySelector('.toggle-btn');
     const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
 
     toggleBtn.addEventListener('click', function() {
         sidebar.classList.toggle('active');
+        overlay.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
         toggleBtn.style.display = sidebar.classList.contains('active') ? 'none' : 'block';
     });
 
     document.addEventListener('click', function(event) {
-        if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+        if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target) && !overlay.contains(event.target)) {
             sidebar.classList.remove('active');
+            overlay.style.display = 'none';
             toggleBtn.style.display = 'block';
         }
+    });
+    overlay.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+        overlay.style.display = 'none';
+        toggleBtn.style.display = 'block';
     });
 
     // Event listener for branch change
