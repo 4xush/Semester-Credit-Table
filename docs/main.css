@@ -32,110 +32,6 @@ body {
     margin-right: 15px;
 }
 
-.slidebar-logo {
-    display: block;
-    margin: auto;
-    /* Center align horizontally */
-    width: 70px;
-    height: auto;
-}
-
-#sidebar {
-    position: absolute;
-    width: 250px;
-    height: 105%;
-    background: #2d2d2d;
-    left: -320px;
-    transition: 0.4s;
-    z-index: 1000;
-    padding-top: 50px;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.068);
-}
-
-#sidebar::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("./media/noise.gif");
-    opacity: 0.04;
-    pointer-events: none;
-    /* Ensure it does not interfere with interactions */
-    z-index: 1000;
-    /* Ensure it is above the sidebar but below other elements */
-}
-
-#sidebar ul {
-    list-style: none;
-    padding: 30px 50px;
-}
-
-#sidebar ul li {
-    color: #fff;
-    font-size: 20px;
-    padding: 10px 20px;
-}
-
-#sidebar ul li a {
-    color: aliceblue;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-#sidebar ul li a:hover {
-    color: aqua;
-    box-shadow: 8px 7px 0px 0px rgba(0, 0, 0, 1);
-    border-radius: 15px;
-}
-
-#sidebar ul li a:active {
-    color: rgb(215, 34, 255);
-}
-
-.toggle-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    cursor: pointer;
-    z-index: 1100;
-}
-
-.toggle-btn span {
-    width: 30px;
-    height: 3px;
-    background: #000;
-    display: block;
-    margin: 5px 0;
-}
-
-#dark_overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    display: none;
-    /* Initially hidden */
-}
-
-#sidebar.active {
-    left: 0;
-}
-
-#sidebar.active+#dark_overlay {
-    display: block;
-    /* Show the dark_overlay when the sidebar is active */
-}
-
-#sidebar.active+#dark_overlay+.toggle-btn {
-    display: none;
-    /* Hide the toggle button when the sidebar is active */
-}
-
 table {
     border-collapse: separate;
     border-spacing: 0;
@@ -143,11 +39,12 @@ table {
     overflow: hidden;
     width: 100%;
     max-width: 100%;
+    box-shadow: 4px 3.5px 10px rgba(170, 177, 217, 0.743);
+    border-radius: 20px;
 }
-
 th,
 td {
-    border: solid rgba(255, 255, 255, 0.867) 1px;
+    border: solid rgba(255, 255, 255, 0.5) 1px;
     text-align: center;
     height: 30px;
     width: 150px;
@@ -179,6 +76,7 @@ tfoot {
     background-color: #45a049;
 }
 
+/* enter your best and lease grade */
 .main-container caption {
     caption-side: bottom;
     padding: 10px;
@@ -226,35 +124,33 @@ tfoot {
     background-color: white;
 }
 
-/* @media (min-width: 768px) { */
-    table {
-        box-shadow: 4px 3.5px 10px rgba(170, 177, 217, 0.743);
-        border-radius: 20px;
-    }
-
-    #semester-table thead tr:first-child th:first-child {
-        border-top-left-radius: 15px;
-    }
-
-    #semester-table thead tr:first-child th:last-child {
-        border-top-right-radius: 15px;
-    }
-
-    #semester-table tfoot tr:last-child th:first-child {
-        border-bottom-left-radius: 15px;
-    }
-
-    #semester-table tfoot tr:last-child td:last-child {
-        border-bottom-right-radius: 15px;
-    }
-/* } */
-
-tbody tr:nth-child(even),thead,tfoot tr:nth-child(2) {
-    background-color: rgba(239, 239, 239, 0.22); /*alternate coloring*/
+#semester-table thead tr:first-child th:first-child {
+    border-top-left-radius: 15px;
 }
-.credentials a{
-text-decoration:none ;
+
+#semester-table thead tr:first-child th:last-child {
+    border-top-right-radius: 15px;
 }
+
+#semester-table tfoot tr:last-child th:first-child {
+    border-bottom-left-radius: 15px;
+}
+
+#semester-table tfoot tr:last-child td:last-child {
+    border-bottom-right-radius: 15px;
+}
+
+tbody tr:nth-child(even),
+thead,
+tfoot tr:nth-child(2) {
+    background-color: rgba(239, 239, 239, 0.22);
+    /*alternate coloring*/
+}
+
+.credentials a {
+    text-decoration: none;
+}
+
 @media (max-width: 768px) {
     .sem-header {
         flex-direction: column;
@@ -266,8 +162,8 @@ text-decoration:none ;
         width: 50px;
     }
 
-    .semester-heading {
-        font-size: 1.2rem;
+    #semester-title {
+        font-size: 2rem;
     }
 
     #sidebar {
@@ -296,12 +192,14 @@ text-decoration:none ;
 
     table {
         width: 100%;
+        box-shadow: 4px 3.5px rgba(170, 177, 217, 0.2);
+        border-radius: 0;
     }
 
     th,
     td {
         height: 20px;
-        width: 60px;
+        width: 80px;
         font-size: 14px;
         padding: 5px;
     }
@@ -335,5 +233,38 @@ text-decoration:none ;
     .credentials {
         top: 100px;
         font-size: 0.74rem;
+    }
+
+    #semester-table thead tr:first-child th:first-child {
+        border-top-left-radius: 0px;
+    }
+
+    #semester-table thead tr:first-child th:last-child {
+        border-top-right-radius: 0px;
+    }
+
+    #semester-table tfoot tr:last-child th:first-child {
+        border-bottom-left-radius: 0px;
+    }
+
+    #semester-table tfoot tr:last-child td:last-child {
+        border-bottom-right-radius: 0px;
+    }
+}
+@media (max-width: 600px) {
+    th,
+    td {
+        height: 20px;
+        width: 60px;
+        font-size: 14px;
+        padding: 5px;
+    }
+    #semester-title{
+    font-size: 1.8rem;
+    }
+    .logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 40px;
     }
 }

@@ -1,0 +1,103 @@
+.slidebar-logo {
+    display: block;
+    margin: auto;
+    /* Center align horizontally */
+    width: 70px;
+    height: auto;
+}
+
+#sidebar {
+    position: absolute;
+    width: 250px;
+    height: 105%;
+    background: #2d2d2d;
+    left: -320px;
+    transition: 0.4s;
+    z-index: 1000;
+    padding-top: 50px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.068);
+}
+
+#sidebar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("./media/noise.gif");
+    opacity: 0.04;
+    pointer-events: none;
+    /* Ensure it does not interfere with interactions */
+    z-index: 1000;
+    /* Ensure it is above the sidebar but below other elements */
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 30px 50px;
+}
+
+#sidebar ul li {
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
+#sidebar ul li a {
+    color: aliceblue;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#sidebar ul li a:hover {
+    color: aqua;
+    box-shadow: 8px 7px 0px 0px rgba(0, 0, 0, 1);
+    border-radius: 15px;
+}
+
+#sidebar ul li a:active {
+    color: rgb(215, 34, 255);
+}
+
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.toggle-btn span {
+    width: 30px;
+    height: 3px;
+    background: #000;
+    display: block;
+    margin: 5px 0;
+}
+
+#dark_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+    /* Initially hidden */
+}
+
+#sidebar.active {
+    left: 0;
+}
+
+#sidebar.active+#dark_overlay {
+    display: block;
+    /* Show the dark_overlay when the sidebar is active */
+}
+
+#sidebar.active+#dark_overlay+.toggle-btn {
+    display: none;
+    /* Hide the toggle button when the sidebar is active */
+}
